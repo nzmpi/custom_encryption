@@ -1,6 +1,6 @@
 const { keccak256, toUtf8Bytes } = require("ethers");
 const { v7: uuidv7 } = require('uuid');
-var seedrandom = require('seedrandom');
+const seedrandom = require('seedrandom');
 require('dotenv').config();
 
 const SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:'\",.<>?/\\`~";
@@ -31,17 +31,12 @@ const hexToString = (hex) => {
 
 // add garbage
 const addGarbage = (text) => {
-    text = text + " ~~garbage: "
-    let characters = keccak256(toUtf8Bytes(uuidv7())).slice(2); // get random characters and remove 0x
+    text = text + " ~~garbage: ";
     while (text.length < MAX_LENGTH) {
-        const character = characters[0];
-        characters = characters.slice(1);
-        text += character;
-        if (characters.length == 0) {
-            characters = keccak256(toUtf8Bytes(uuidv7())).slice(2);
-        }
+        text += keccak256(toUtf8Bytes(uuidv7())).slice(2);
     }
-    return text;
+
+    return text.slice(0, MAX_LENGTH);
 }
 
 // encrypt
