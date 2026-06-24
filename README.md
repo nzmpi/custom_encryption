@@ -6,12 +6,14 @@ Encrypt and decrypt any text.
     
   - Run `git clone git@github.com:nzmpi/custom_encryption.git && cd custom_encryption`
   
-  - Run `yarn install` to install dependencies
+  - Run `npm install` to install dependencies
 
   - Change `.env-Example` to `.env`
 
   - In `.env` update `SECRET`, `TEXT_TO_ENCRYPT` and/or `TEXT_TO_DECRYPT`
 
-  - Run `node encryptAndDecrypt.js`
+  - Run `tsx encryptAndDecrypt.ts e` to encrypt `TEXT_TO_ENCRYPT`
+
+  - Run `tsx encryptAndDecrypt.ts d` to decrypt `TEXT_TO_DECRYPT`
 
 
